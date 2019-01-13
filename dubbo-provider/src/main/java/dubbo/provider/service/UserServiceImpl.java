@@ -3,6 +3,7 @@ package dubbo.provider.service;
 import dubbo.api.model.User;
 import dubbo.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
@@ -37,11 +38,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> listUser() {
-        return null;
+        return jdbcTemplate.query("select * from user", new BeanPropertyRowMapper(User.class));
     }
 
     @Override
     public void saveUser(User user) {
-
+        jdbcTemplate.update("insert into user(name,age,phone,address) values(?,?,?,?)",
+                user.getName(), user.getAge(), user.getPhone(), user.getAge());
     }
 }

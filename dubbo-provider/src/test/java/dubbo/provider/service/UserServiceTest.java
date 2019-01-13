@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 /**
  * @author dingmx
  * @date 2019/1/12 16:48
@@ -32,5 +34,14 @@ public class UserServiceTest {
         System.out.println(user.getId());
         System.out.println(user.getName());
         System.out.println(user.getAddress());
+    }
+
+    @Test
+    public void testListUser() {
+        List<User> userList = userService.listUser();
+        for(User user:userList) {
+            System.out.println(user.getId());
+            System.out.println(user.getName());
+        }
     }
 }

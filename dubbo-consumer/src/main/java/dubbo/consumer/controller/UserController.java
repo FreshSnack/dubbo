@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    @Reference(url = "dubbo://127.0.0.1:20880")
+    @Reference/*(url = "dubbo://127.0.0.1:20880")*/
     UserService userService;
 
     @ResponseBody
